@@ -1,5 +1,6 @@
 import * as React from "react";
 import { UserAgentApplication, Account, AuthResponse, AuthError } from "msal";
+import { PublicClientApplication } from "@azure/msal-browser";
 import { IdToken } from "msal/lib-commonjs/IdToken";
 
 type MicrosoftLoginButtonTheme = "dark_short" | "light_short" | "dark" | "light";
@@ -66,6 +67,11 @@ interface MicrosoftLoginProps extends React.Props<MicrosoftLogin> {
    * The redirect URI of the application, this should be same as the value in the application registration portal.
    */
   redirectUri?: string;
+
+  /**
+   * Define if the authentication will follow the Implicit Grant Flow (MSAL 1.x) or Authorization Code Flow (MSAL 2.x)
+   */
+  implicitFlow?: boolean;
 }
 
 interface GraphAPIUserData extends AuthResponse {
@@ -93,7 +99,7 @@ interface GraphAPIUserData extends AuthResponse {
 }
 
 interface MicrosoftLoginState {
-  msalInstance?: UserAgentApplication;
+  msalInstance?: UserAgentApplication | PublicClientApplication;
   scopes: string[];
 }
 
