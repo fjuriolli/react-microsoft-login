@@ -1,5 +1,5 @@
-import MicrosoftLogin from "./MicrosoftLogin";
+import MicrosoftLoginImplicitGrantFlow from "./MicrosoftLoginImplicitGrantFlow";
 
-export { MicrosoftLogin };
+export { MicrosoftLoginImplicitGrantFlow };
 
-export default MicrosoftLogin;
+export default MicrosoftLoginImplicitGrantFlow;
